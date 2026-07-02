@@ -117,7 +117,7 @@ public void OnClientPutInServer(int iClient)
 
 public void OnPreThinkPost(int iClient)
 {
-  if (!IsValidClient(iClient) && !IsPlayerAlive(iClient))
+  if (!IsValidClient(iClient) || !IsPlayerAlive(iClient))
     return;
   
   if (g_bPerformGoomba[iClient])
@@ -173,6 +173,9 @@ public void GoombaStomp(int iClient, int iVictim,
                         float fDmgMult, float fDmgBonus, 
                         float fJumpPower)
 {
+  if (!g_goomba.m_hCvars.PluginEnabled.BoolValue)
+    return;
+
   if (fJumpPower > 0.0)
   {
     float vel[3];
@@ -219,6 +222,9 @@ public void GoombaStomp(int iClient, int iVictim,
 
 public Action OnStartTouch(int iClient, int iOther)
 {
+  if (!g_goomba.m_hCvars.PluginEnabled.BoolValue)
+    return Plugin_Continue;
+
   if (!IsValidClient(iClient) || !IsValidClient(iOther))
     return Plugin_Continue;
 
@@ -240,7 +246,7 @@ public Action OnStartTouch(int iClient, int iOther)
 
   if (fVec[2] < g_goomba.m_hCvars.StompMinSpeed.FloatValue * -1.0 )
   {
-    if (g_bGoombaPlayer[iClient] && !AreValidStompTargets(iClient, iOther))
+    if (!AreValidStompTargets(iClient, iOther))
       return Plugin_Continue;
     
     // Perform Goomba Stomp
@@ -269,7 +275,7 @@ stock bool AreValidStompTargets(int iClient, int iVictim)
   // Only check classname if necessary
   char sClass[32];
   GetEdictClassname(iVictim, sClass, sizeof(sClass));
-  if (!StrEqual(sClass, "player") && !IsPlayerAlive(iVictim))
+  if (!StrEqual(sClass, "player") || !IsPlayerAlive(iVictim))
     return false;
 
   // Uber, Stun, Bonked checks
