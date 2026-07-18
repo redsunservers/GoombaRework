@@ -65,7 +65,7 @@ public void OnPluginStart()
 
   LoadTranslations("goomba.phrases");
 
-  g_goomba.m_hCvars.PluginEnabled        = CreateConVar("goomba_enabled", "1.0", "Plugin On/Off", 0, true, 0.0, true, 1.0);
+  g_goomba.m_hCvars.PluginEnabled        = CreateConVar("goomba_enabled", "0.0", "Plugin On/Off", 0, true, 0.0, true, 1.0);
   g_goomba.m_hCvars.SoundsEnabled        = CreateConVar("goomba_sounds", "1", "Enable or disable sounds of the plugin", 0, true, 0.0, true, 1.0);
   g_goomba.m_hCvars.ParticlesEnabled     = CreateConVar("goomba_particles", "1", "Enable or disable particles of the plugin", 0, true, 0.0, true, 1.0);
   g_goomba.m_hCvars.ImmunityEnabled      = CreateConVar("goomba_immunity", "1", "Enable or disable the immunity system", 0, true, 0.0, true, 1.0);

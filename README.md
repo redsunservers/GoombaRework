@@ -49,7 +49,7 @@ The plugin auto-generates a config file:
 
 | ConVar                      | Default | Description                                    |
 | --------------------------- | ------- | ---------------------------------------------- |
-| `goomba_enabled`            | `1`     | Enable/disable the plugin                      |
+| `goomba_enabled`            | `0`     | Enable/disable the plugin                      |
 | `goomba_sounds`             | `1`     | Enable stomp & rebound sounds                  |
 | `goomba_particles`          | `1`     | Enable particle effects                        |
 | `goomba_rebound_power`      | `300.0` | Stomp rebound jump power                       |
@@ -86,4 +86,3 @@ SourceMod 1.11+
 [TF2Items / TF2Stocks include (bundled with SM TF2 extension)]
 
 [MoreColors include](https://github.com/DoctorMcKay/sourcemod-morecolors)
-
